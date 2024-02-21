@@ -2,6 +2,7 @@ from graspnetAPI import GraspNet
 import cv2
 import open3d as o3d
 import os
+from tqdm import tqdm
 
 # load all dataset in scene, and convert depth and color image to rgb cloud
 
@@ -26,14 +27,14 @@ else:
 g = GraspNet(graspnet_root, camera = camera, split = 'train')
 
 # load rgb and visualized for 1 sec
-for sceneId in range(160, 190):
-    for annId in range(1, 256, 8):
-        bgr = g.loadBGR(sceneId = sceneId, annId = annId, camera = camera)
-        cv2.imshow('bgr', bgr)
-        cv2.waitKey(2000)
-        cv2.destroyAllWindows()
+for sceneId in tqdm(range(160, 190)):
+    for annId in range(0, 256, 8):
+        # bgr = g.loadBGR(sceneId = sceneId, annId = annId, camera = camera)
+        # cv2.imshow('bgr', bgr)
+        # cv2.waitKey(2000)
+        # cv2.destroyAllWindows()
 
-        cloud = g.loadScenePointCloud(sceneId = sceneId, annId = annId, camera = camera, align = True, use_workspace = True)
+        cloud = g.loadScenePointCloud(sceneId = sceneId, annId = annId, camera = camera,  use_workspace = True)
 
         # visualize the cloud using open3d
         # o3d.visualization.draw_geometries([cloud])

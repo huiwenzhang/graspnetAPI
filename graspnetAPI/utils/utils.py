@@ -104,7 +104,7 @@ def generate_scene_model(dataset_root, scene_name, anno_idx, return_poses=False,
         camera_pose = camera_poses[anno_idx]
         align_mat = np.load(os.path.join(dataset_root, 'scenes', scene_name, camera, 'cam0_wrt_table.npy'))
         camera_pose = np.matmul(align_mat,camera_pose)
-    print('Scene {}, {}'.format(scene_name, camera))
+    # print('Scene {}, {}'.format(scene_name, camera))
     scene_reader = xmlReader(os.path.join(dataset_root, 'scenes', scene_name, camera, 'annotations', '%04d.xml'%anno_idx))
     posevectors = scene_reader.getposevectorlist()
     obj_list = []
