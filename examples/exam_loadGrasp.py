@@ -9,11 +9,11 @@ import cv2
 # change the graspnet_root path
 
 ####################################################################
-graspnet_root = '/home/gmh/graspnet' # ROOT PATH FOR GRASPNET
+graspnet_root = '/home/alvin/data/graspnet' # ROOT PATH FOR GRASPNET
 ####################################################################
 
-sceneId = 1
-annId = 3
+sceneId = 1  # 场景
+annId = 30    # 场景中的一个视角
 
 # initialize a GraspNet instance  
 g = GraspNet(graspnet_root, camera='kinect', split='train')

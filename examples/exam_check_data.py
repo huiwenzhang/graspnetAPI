@@ -9,7 +9,7 @@ from graspnetAPI import GraspNet
 if __name__ == '__main__':
 
     ####################################################################
-    graspnet_root = '/home/gmh/graspnet'  ### ROOT PATH FOR GRASPNET ###
+    graspnet_root = '/home/alvin/data/graspnet'  ### ROOT PATH FOR GRASPNET ###
     ####################################################################
 
     g = GraspNet(graspnet_root, 'kinect', 'all')

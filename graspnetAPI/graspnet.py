@@ -121,7 +121,7 @@ class GraspNet():
                 self.metaPath.append(os.path.join(
                     root, 'scenes', 'scene_'+str(i).zfill(4), camera, 'meta', str(img_num).zfill(4)+'.mat'))
                 self.rectLabelPath.append(os.path.join(
-                    root, 'scenes', 'scene_'+str(i).zfill(4), camera, 'rect', str(img_num).zfill(4)+'.npy'))
+                    root, 'rect_labels', 'scene_'+str(i).zfill(4), camera, str(img_num).zfill(4)+'.npy'))
                 self.sceneName.append('scene_'+str(i).zfill(4))
                 self.annId.append(img_num)
 
@@ -663,7 +663,7 @@ class GraspNet():
             return grasp_group
         else:
             # 'rect'
-            rect_grasps = RectGraspGroup(os.path.join(self.root,'scenes','scene_%04d' % sceneId,camera,'rect','%04d.npy' % annId))
+            rect_grasps = RectGraspGroup(os.path.join(self.root,'rect_labels','scene_%04d' % sceneId,camera,'%04d.npy' % annId))
             return rect_grasps
 
     def loadData(self, ids=None, *extargs):

@@ -6,10 +6,11 @@ import pickle
 import os
 
 ##### Change the root to your path #####
-graspnet_root = '/home/gmh/graspnet'
+graspnet_root = '/home/alvin/data/graspnet'
 
 ##### Do NOT change this folder name #####
 dex_folder = 'dex_models'
+dex_folder = os.path.join(graspnet_root, dex_folder)
 if not os.path.exists(dex_folder):
     os.makedirs(dex_folder)
 

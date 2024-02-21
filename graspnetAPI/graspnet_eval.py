@@ -111,12 +111,14 @@ class GraspNetEval(GraspNet):
 
         - scene_accuracy: np.array of shape (256, 50, 6) of the accuracy tensor.
         '''
+
         config = get_config()
         table = create_table_points(1.0, 1.0, 0.05, dx=-0.5, dy=-0.5, dz=-0.05, grid_size=0.008)
         
         list_coe_of_friction = [0.2,0.4,0.6,0.8,1.0,1.2]
 
         model_list, dexmodel_list, _ = self.get_scene_models(scene_id, ann_id=0)
+
 
         model_sampled_list = list()
         for model in model_list:
@@ -127,6 +129,7 @@ class GraspNetEval(GraspNet):
         grasp_list_list = []
         score_list_list = []
         collision_list_list = []
+
 
         for ann_id in range(256):
             grasp_group = GraspGroup().from_npy(os.path.join(dump_folder,get_scene_name(scene_id), self.camera, '%04d.npy' % (ann_id,)))
@@ -217,6 +220,12 @@ class GraspNetEval(GraspNet):
 
         - scene_acc_list: list of the scene accuracy.
         '''
+        if proc == 1:
+            res_list = []
+            for secne_id in scene_ids:
+                res_list.append(self.eval_scene(secne_id, dump_folder))
+            return res_list
+
         from multiprocessing import Pool
         p = Pool(processes = proc)
         res_list = []
